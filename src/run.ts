@@ -1,5 +1,6 @@
 import commandLineArgs from "command-line-args";
 import commandLineUsage from "command-line-usage";
+import { readFileSync } from "fs";
 
 const optionDefinitions = [
   {
@@ -36,6 +37,9 @@ if (!day || !puzzle) {
   process.exit(0);
 }
 
+const puzzlePath = `${__dirname}/days/day${day}/puzzle${puzzle}`;
+const data: Array<string> = readFileSync(`${puzzlePath}/data.txt`, "utf8").split("\n");
+
 import(`${__dirname}/days/day${day}/puzzle${puzzle}`)
-  .then(run => run.default())
+  .then(run => run.default(data))
   .then(result => console.log(result));
