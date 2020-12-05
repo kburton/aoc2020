@@ -26,7 +26,7 @@ const solution = (data: Array<string>): string => {
     {x: 1, y: 2},
   ];
 
-  return `${deltas.reduce((acc, delta) => acc * check(data, delta), 1)}`
+  return `${deltas.reduce((acc, delta) => acc * check(data, delta), 1)}`;
 };
 
 export default solution;
